@@ -1,0 +1,6 @@
+setuptools
+pip
+wheel
+ipython
+Flask
+feedparser
