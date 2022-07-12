@@ -3,9 +3,35 @@
     <title>Headlines</title>
 </head>
 <body>
-    <h1>{{pub}} Headlines</h1>
+    <h1>Headlines</h1>
+    <h2>Current weather</h2>
     <form>
-        <input type="text" name="publication" placeholder="search" />
+        <input type="text" name="city" placeholder="weather search">
+        <input type="submit" value="Submit">
+    </form>
+    <p>City: <b>{{weather.city}}, {{weather.country}}</b></p>
+    <p>{{weather.description}} |{{weather.temperature}}&#8451;</p>
+    <hr />
+    <h2>Currency</h2>
+    <form>
+        from: <select name="currency_from">
+        {% for currency in currencies %}
+            <option value="{{currency}}" {% if (currency_from == currency) %} selected="selected" {% endif %}> {{currency}}</option>
+        {% endfor %}
+        </select>
+
+        to: <select name="currency_to">
+        {% for currency in currencies %}
+            <option value="{{currency}}" {% if (currency_to == currency) %} selected="selected" {% endif %}> {{currency}}</option>
+        {% endfor %}
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+    1 {{currency_from}} = {{currency_to}} {{rate}}
+    <hr>
+    <h2>{{pub}} Headlines</h2>
+    <form>
+        <input type="text" name="publication" placeholder="search publication" />
         <input type="submit" value="Submit" />
     </form>
     {% for article in articles %}
